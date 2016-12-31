@@ -1,7 +1,13 @@
 # dnsmasq
-run dnsmasq in docker container on x86 with DNS server, DHCP server, custom static ip and domain in file '/home/dnsmasq/hosts'.
+Docker x86 image of dnsmasq with funcationalities as follow,
 
-## How to use?
+* DNS Server
+* DHCP Server 
+* Bind static ip with domain name
+ 
+
+## Usage 
 ```
-docker run -itd --restart=always --cap-add=NET_ADMIN --net=host -v [ directory for dhcp leases file ]:/home/dnsmasq -v [ directory that stores file 'hosts']:/home/dnsmasq -e SERVER_LIST=[ your dns server address ] -e DOMAIN=[ your hostname ] -e DHCP_RANGE=[ your DHCP range, like 'xxx.xxx.xxx.3,xxx.xxx.xxx.100' ] -e DHCP_RELAY_TIME=[ dhcp relay time ] --name router_dnsmasq_1 dorrypizza/dnsmasq
+docker run -itd --restart=always --cap-add=NET_ADMIN --net=host -v /data/dnsmasq:/home/dnsmasq -e SERVER_LIST=8.8.8.8#53;114.114.114.114#53 -e DOMAIN=my_hostname -e DHCP_RANGE=192.168.1.2,192.168.1.254 -e DHCP_RELAY_TIME=12h --name router_dnsmasq dorrypizza/dnsmasq
 ```
+
