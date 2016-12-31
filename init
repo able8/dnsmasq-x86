@@ -1,0 +1,31 @@
+#!/bin/bash
+dns_config="domain-needed;no-resolv;local=/"$DOMAIN"/;domain="$DOMAIN";addn-hosts=/home/dnsmasq/hosts"
+dhcp_config="expand-hosts;dhcp-authoritative;cache-size=150;dhcp-leasefile=/home/dnsmasq/dhcp.leases;dhcp-range="$DHCP_RANGE","$DHCP_RELAY_TIME""
+
+SET-CONFIG() {
+  configlist=$1
+  for config in $(echo $configlist | tr ";" "\n")
+  do
+    echo $config >> /etc/dnsmasq.conf
+  done
+}
+
+ADD-DNS-SERVER() {
+  for server in $(echo $SERVER_LIST | tr ";" "\n")
+  do
+    echo server=$server >> /etc/dnsmasq.conf
+  done
+}
+
+REGIST () {
+  echo "server registeriation start ..."
+  touch /etc/dnsmasq.conf
+  SET-CONFIG $dns_config
+  ADD-DNS-SERVER
+  SET-CONFIG $dhcp_config
+  cat /etc/dnsmasq.conf
+  echo "server registeriation ... done"
+}
+
+[ -f /etc/dnsmasq.conf ] && echo "already registed" || REGIST
+dnsmasq -k
