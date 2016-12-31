@@ -1,5 +1,5 @@
 #!/bin/bash
-dns_config="domain-needed;no-resolv;local=/"$DOMAIN"/;domain="$DOMAIN";addn-hosts=/home/dnsmasq/hosts"
+dns_config="domain-needed;no-resolv;local=/"$HOST"/;domain="$HOST";addn-hosts=/home/dnsmasq/hosts"
 dhcp_config="expand-hosts;dhcp-authoritative;cache-size=150;dhcp-leasefile=/home/dnsmasq/dhcp.leases;dhcp-range="$DHCP_RANGE","$DHCP_RELAY_TIME""
 
 SET-CONFIG() {
