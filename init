@@ -12,9 +12,12 @@ SET-CONFIG() {
 }
 
 ADD-DNS-SERVER() {
-  for line in $(cat $file) ; do
-    echo server=$line >> /etc/dnsmasq.conf
-  done < $dns_file
+  if [ -f $dns_file ]; then
+    for line in $(cat $file) ; do
+      echo server=$line >> /etc/dnsmasq.conf
+    done < $dns_file
+  else
+    echo "DNS server file not found!"
 }
 
 INIT () {
