@@ -26,6 +26,7 @@ INIT () {
   SET-CONFIG $dhcp_config
   cat /etc/dnsmasq.conf
   echo "server registeriation ... done"
+  dnsmasq -k
 }
 
-dnsmasq -k
+INIT
