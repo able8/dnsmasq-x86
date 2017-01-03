@@ -18,6 +18,7 @@ ADD-DNS-SERVER() {
     done < $dns_file
   else
     echo "DNS server file not found!"
+  fi
 }
 
 INIT () {
