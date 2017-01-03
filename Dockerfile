@@ -5,6 +5,7 @@ RUN apk update && \
     apk add --update bash dnsmasq && \
     rm -rf /var/cache/apk/*
 
-ADD init ./
+COPY init ./
+COPY dnsmasq.conf.bk /etc/
 
 ENTRYPOINT ./init
