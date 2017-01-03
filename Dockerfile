@@ -7,6 +7,4 @@ RUN apk update && \
 
 ADD init ./
 
-RUN rm /etc/dnsmasq.conf
-
 ENTRYPOINT ./init

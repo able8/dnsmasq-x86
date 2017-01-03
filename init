@@ -11,15 +11,15 @@ SET-CONFIG() {
   done
 }
 
-
 ADD-DNS-SERVER() {
   for line in $(cat $file) ; do
     echo server=$line >> /etc/dnsmasq.conf
   done < $dns_file
 }
 
-REGIST () {
+INIT () {
   echo "server registeriation start ..."
+  rm /etc/dnsmasq.conf
   touch /etc/dnsmasq.conf
   SET-CONFIG $dns_config
   ADD-DNS-SERVER
@@ -28,5 +28,4 @@ REGIST () {
   echo "server registeriation ... done"
 }
 
-[ -f /etc/dnsmasq.conf ] && echo "already registed" || REGIST
 dnsmasq -k
