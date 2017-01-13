@@ -29,6 +29,7 @@ INIT () {
   sed -i "/dhcp-range=/cdhcp-range="$DHCP_RANGE","$DHCP_RELAY_TIME"" $config_file
   ADD-DNS-SERVER
   ADD-STATIC-HOST
+  [ "$MY_DNS" != "" ] && echo "dhcp-option=6,$MY_DNS" >> $config_file
   cat $config_file
   echo "dnsmasq starting ..."
   dnsmasq -k
