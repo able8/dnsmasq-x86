@@ -5,6 +5,7 @@ Docker x86 image of dnsmasq with funcationalities as follow,
 * DHCP Server at port 67, DHCP leases file in `/dorry_data/dnsmasq/dhcp.leases`.
 * Bind static ip with domain name by file `/dorry_data/dnsmasq/hosts`.
 * Bind mac address with static ip and domain name by file `/dorry_data/dnsmasq/static-hosts`.
+* Other custom configs in `OTHERS`
 
 ## Usage 
 ```

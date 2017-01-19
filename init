@@ -22,6 +22,14 @@ ADD-STATIC-HOST() {
   fi
 }
 
+SET-CONFIG() {
+  configlist=$1
+  for config in $(echo $configlist | tr ";" "\n")
+  do
+    echo $config >> /etc/dnsmasq.conf
+  done
+}
+
 INIT () {
   # create dnsmasq config file from config template
   sed "/local=/clocal=/"$DOMAIN"/" $config_template > $config_file
@@ -29,6 +37,7 @@ INIT () {
   sed -i "/dhcp-range=/cdhcp-range="$DHCP_RANGE","$DHCP_RELAY_TIME"" $config_file
   ADD-DNS-SERVER
   ADD-STATIC-HOST
+  SET-CONFIG $OTHERS
   [ "$MY_DNS" != "" ] && echo "dhcp-option=6,$MY_DNS" >> $config_file
   cat $config_file
   echo "dnsmasq starting ..."
