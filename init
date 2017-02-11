@@ -3,6 +3,8 @@ config_template="/etc/dnsmasq.conf.bk"
 config_file="/etc/dnsmasq.conf"
 dns_file="/home/dnsmasq/dns-server"
 host_file="/home/dnsmasq/static-hosts"
+white_list_file="/home/dnsmasq/accelerated-domains.china.conf"
+
 
 ADD-DNS-SERVER() {
   if [ -f $dns_file ]; then
@@ -26,7 +28,7 @@ SET-CONFIG() {
   configlist=$1
   for config in $(echo $configlist | tr ";" "\n")
   do
-    echo $config >> /etc/dnsmasq.conf
+    echo $config >> $config_file 
   done
 }
 
@@ -41,7 +43,7 @@ INIT () {
   [ "$MY_DNS" != "" ] && echo "dhcp-option=6,$MY_DNS" >> $config_file
   cat $config_file
   echo "dnsmasq starting ..."
-  dnsmasq -k
+  dnsmasq -k --servers-file=$white_list_file
 }
 
 INIT
