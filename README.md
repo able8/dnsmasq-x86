@@ -3,8 +3,8 @@ Docker x86 image of dnsmasq with funcationalities as follow,
 
 * DNS Server at port 53,
 
-  uplayer DNS server 114.114.114.114 for Domains in /dorry_data/dnsmasq/accelerated-domains.china.conf
-  and uplayer DNS servers in /dorry_data/dnsmasq/dns-server for domains left.
+  uplayer DNS server 114.114.114.114 for Domains in `/dorry_data/dnsmasq/accelerated-domains.china.conf`
+  and uplayer DNS servers in `/dorry_data/dnsmasq/dns-server for domains` left.
 * DHCP Server at port 67, DHCP leases file in `/dorry_data/dnsmasq/dhcp.leases`.
 * Bind static ip with domain name by file `/dorry_data/dnsmasq/hosts`.
 * Bind mac address with static ip and domain name by file `/dorry_data/dnsmasq/static-hosts`.
