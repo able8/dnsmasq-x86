@@ -1,1 +1,3 @@
-docker run -itd --restart=always --cap-add=NET_ADMIN --net=host -v /dorry_data/dnsmasq:/etc/dnsmasq -v /dorry_data/dnsmasq.d:/etc/dnsmasq.d --name test_dnsmasq dnsmasq:test
+#!/bin/bash
+sudo cp -r `pwd`/dnsmasq_conf /dorry_data/
+docker run -itd --restart=always --cap-add=NET_ADMIN --net=host -v /dorry_data/dnsmasq_conf/dnsmasq:/etc/dnsmasq -v /dorry_data/dnsmasq_conf/dnsmasq.d:/etc/dnsmasq.d --name test_dnsmasq dorrypizza/dnsmasq:0.1.7
