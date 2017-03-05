@@ -1,12 +1,19 @@
 # dnsmasq
-Docker x86 image of dnsmasq with funcationalities as follow,
+Docker x86 image of dnsmasq 
 
 ## Usage 
 
-1. Modify the configuration in `dnsmasq_conf/dnsmasq` and `dnsmasq_conf/dnsmasq.d`
-2. Running
+* Pull the code
 ```
-git clone git@github.com:dorrywhale/dnsmasq.git
-cd dnsmasq
+git clone git@github.com:dorrywhale/dnsmasq-x86.git
+```
+* Modify the configuration in `dnsmasq_conf/dnsmasq` and `dnsmasq_conf/dnsmasq.d`
+```
+cd dnsmasq-x86
+vim dnsmasq_conf/dnsmasq/dnsmasq.conf
+vim dnsmasq_conf/dnsmasq.d/xxx.conf
+```
+* Running
+```
 ./dns_start.sh
 ```
