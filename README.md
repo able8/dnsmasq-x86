@@ -5,7 +5,7 @@ Docker x86 image of dnsmasq
 
 * Pull the code
 ```
-git clone git@github.com:dorrywhale/dnsmasq-x86.git
+git clone git@github.com:LaoLuMian/dnsmasq-x86.git
 ```
 * Modify the configuration in `dnsmasq_conf/dnsmasq` and `dnsmasq_conf/dnsmasq.d`
 ```
